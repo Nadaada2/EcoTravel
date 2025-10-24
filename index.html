@@ -4,96 +4,218 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EcoTravel - Sustainable Adventures</title>
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
     <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/869/869636.png" type="image/png">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-</head>
-<body class="bg-white text-gray-800 font-sans transition-colors duration-500" style="font-family: 'Poppins', sans-serif;">
 
-    <!-- Header -->
-    <header class="fixed w-full bg-white shadow-md z-50">
-        <div class="max-w-6xl mx-auto flex justify-between items-center p-4">
-            <h1 class="text-2xl font-bold text-green-600">EcoTravel</h1>
-            <nav class="space-x-6 text-gray-700 font-medium">
-                <a href="#packages" class="hover:text-green-500 transition">Packages</a>
-                <a href="#about" class="hover:text-green-500 transition">About</a>
-                <a href="#newsletter" class="hover:text-green-500 transition">Contact</a>
-            </nav>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'], 
+                    },
+                    colors: {
+                        'forest': {
+                            DEFAULT: '#0B6623',
+                            light: '#38A169',
+                            dark: '#033D14',
+                        },
+                        'taupe': {
+                            light: '#FAF5EE',
+                            DEFAULT: '#E5E5E5',
+                        },
+                        'dark-text': '#1F2937',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        /* General Styles */
+        body {
+            scroll-padding-top: 6rem;
+            background-color: #F8F8F8;
+        }
+        
+        /* Hero Styling */
+        .hero-section {
+            background-image: url('gambar1.jpg');
+        }
+
+        /* Card Hover Effect */
+        .package-card {
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: transform 0.4s ease-out, box-shadow 0.4s ease-out;
+        }
+        .package-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Image Zoom on Hover (Subtle) */
+        .package-image {
+            transition: transform 0.5s ease-out;
+        }
+        .package-card:hover .package-image {
+            transform: scale(1.05);
+        }
+
+        /* Custom Section Separator */
+        .section-separator {
+            padding: 60px 40px;
+        }
+    </style>
+</head>
+<body class="bg-white text-dark-text">
+
+    <header class="fixed w-full bg-white shadow-lg z-50 transition-all duration-300">
+        <div class="max-w-7xl mx-auto flex justify-between items-center p-4">
+            <h1 class="text-3xl font-extrabold text-forest">EcoTravel</h1>
+            <nav class="space-x-6 text-gray-700 font-medium hidden md:block">
+                <a href="#packages" class="hover:text-forest transition">Packages</a>
+                <a href="#values" class="hover:text-forest transition">Values</a>
+                <a href="#about" class="hover:text-forest transition">About</a>
+                </nav>
+            <a href="#contact" class="px-5 py-2 bg-forest text-white font-semibold rounded-full hover:bg-forest-dark transition shadow-md hidden md:block">Book Now</a>
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="relative h-screen bg-cover bg-center flex items-center justify-center" style="background-image:url('gambar1.jpg');">
-        <div class="absolute inset-0 bg-black/50"></div>
-        <div class="relative text-center px-4 max-w-2xl" data-aos="fade-up" data-aos-duration="1500">
-            <h2 class="text-5xl font-extrabold mb-4 text-white">Explore the World Sustainably</h2>
-            <p class="text-lg mb-6 text-white">Eco-friendly travel packages for unforgettable adventures</p>
-            <a href="#packages" class="inline-block bg-green-600 text-white font-semibold px-6 py-3 rounded shadow-lg hover:bg-green-500 transition transform hover:scale-105">View Packages</a>
+    <section id="hero" class="relative h-screen min-h-[650px] bg-cover bg-center flex items-center justify-center hero-section">
+        <div class="absolute inset-0 bg-dark-text/50"></div>
+        <div class="relative text-center px-4 max-w-4xl" data-aos="fade-up" data-aos-duration="1200">
+            <p class="text-xl font-medium text-white mb-3 tracking-wider uppercase">Responsible Journeys, Unforgettable Destinations</p>
+            <h2 class="text-6xl md:text-7xl font-extrabold font-serif mb-6 text-white leading-tight drop-shadow-xl">Explore the World, <span class="text-forest-light">Protect the Planet.</span></h2>
+            <a href="#packages" class="inline-block bg-forest text-white font-semibold px-8 py-4 rounded-full shadow-2xl hover:bg-forest-dark transition transform hover:scale-[1.02] text-lg uppercase tracking-wider">Discover Eco Packages</a>
         </div>
     </section>
 
-    <!-- Packages -->
-    <section id="packages" class="max-w-6xl mx-auto py-20 px-4">
-        <h2 class="text-3xl font-bold text-green-600 text-center mb-12" data-aos="fade-right" data-aos-duration="1000">Featured Packages</h2>
-        <div class="grid gap-10 md:grid-cols-3">
-            <div class="bg-white rounded-xl shadow-2xl overflow-hidden transform transition duration-500 hover:-translate-y-2 hover:scale-105 hover:rotate-1" data-aos="zoom-in" data-aos-delay="100">
-                <img src="gambar2.jpg" class="w-full h-56 object-cover transition-transform duration-500 hover:scale-110" alt="Tropical Beach">
-                <div class="p-6">
-                    <h3 class="text-xl font-bold text-green-600 mb-2">Tropical Beach</h3>
-                    <p>Enjoy pristine beaches with our eco-friendly travel programs.</p>
-                    <button class="mt-4 px-4 py-2 bg-green-600 text-white rounded shadow hover:bg-green-500 transition transform hover:scale-105">Book Now</button>
+    <section id="values" class="bg-taupe-light section-separator px-4">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-base font-semibold text-forest uppercase tracking-widest text-center mb-2" data-aos="fade-down">Our Pledge</h2>
+            <h3 class="text-4xl font-bold font-serif text-dark-text text-center mb-12" data-aos="fade-down" data-aos-delay="100">Committed to Sustainability</h3>
+            
+            <div class="grid gap-8 md:grid-cols-4 text-center">
+                
+                <div class="p-6" data-aos="fade-up" data-aos-delay="200">
+                    <i class="fas fa-tree text-5xl text-forest mb-3"></i>
+                    <h4 class="text-lg font-bold mb-1">Carbon Neutral</h4>
+                    <p class="text-sm text-gray-600">We offset 100% of the carbon footprint for every trip booked.</p>
+                </div>
+
+                <div class="p-6" data-aos="fade-up" data-aos-delay="300">
+                    <i class="fas fa-hand-holding-heart text-5xl text-forest mb-3"></i>
+                    <h4 class="text-lg font-bold mb-1">Local Focus</h4>
+                    <p class="text-sm text-gray-600">All tours support local communities and promote ethical employment.</p>
+                </div>
+
+                <div class="p-6" data-aos="fade-up" data-aos-delay="400">
+                    <i class="fas fa-leaf text-5xl text-forest mb-3"></i>
+                    <h4 class="text-lg font-bold mb-1">Preservation</h4>
+                    <p class="text-sm text-gray-600">Dedicated funding goes directly to conservation projects globally.</p>
+                </div>
+                 <div class="p-6" data-aos="fade-up" data-aos-delay="500">
+                    <i class="fas fa-route text-5xl text-forest mb-3"></i>
+                    <h4 class="text-lg font-bold mb-1">Minimal Impact</h4>
+                    <p class="text-sm text-gray-600">Carefully planned itineraries to ensure minimal environmental disturbance.</p>
                 </div>
             </div>
-            <div class="bg-white rounded-xl shadow-2xl overflow-hidden transform transition duration-500 hover:-translate-y-2 hover:scale-105 hover:-rotate-1" data-aos="zoom-in" data-aos-delay="200">
-                <img src="gambar3.jpg" class="w-full h-56 object-cover transition-transform duration-500 hover:scale-110" alt="Forest Adventure">
+        </div>
+    </section>
+
+    <section id="packages" class="max-w-7xl mx-auto section-separator px-4">
+        <h2 class="text-base font-semibold text-forest uppercase tracking-widest text-center mb-2" data-aos="fade-down">Adventures Await</h2>
+        <h3 class="text-4xl font-bold font-serif text-dark-text text-center mb-12" data-aos="fade-down" data-aos-delay="100">Our Featured Eco Packages</h3>
+
+        <div class="grid gap-8 md:grid-cols-3">
+            
+            <div class="bg-white rounded-xl overflow-hidden package-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="h-60 overflow-hidden">
+                    <img src="gambar2.jpg" class="w-full h-full object-cover package-image" alt="Tropical Beach">
+                </div>
                 <div class="p-6">
-                    <h3 class="text-xl font-bold text-green-600 mb-2">Forest Adventure</h3>
-                    <p>Experience the wilderness responsibly with guided eco-tours.</p>
-                    <button class="mt-4 px-4 py-2 bg-green-600 text-white rounded shadow hover:bg-green-500 transition transform hover:scale-105">Book Now</button>
+                    <h4 class="text-2xl font-bold font-serif text-forest mb-1">Pristine Coasts</h4>
+                    <p class="text-sm text-gray-500 mb-3">7 Days | Bali, Indonesia</p>
+                    <p class="text-gray-700 text-sm mb-4">Enjoy secluded, pristine beaches with local, zero-waste stays and coral reef restoration efforts.</p>
+                    <a href="#contact" class="px-4 py-2 bg-forest text-white font-semibold rounded hover:bg-forest-light transition uppercase text-sm">Book Now</a>
                 </div>
             </div>
-            <div class="bg-white rounded-xl shadow-2xl overflow-hidden transform transition duration-500 hover:-translate-y-2 hover:scale-105 hover:rotate-2" data-aos="zoom-in" data-aos-delay="300">
-                <img src="gambar4.jpg" class="w-full h-56 object-cover transition-transform duration-500 hover:scale-110" alt="Mountain Hiking">
-                <div class="p-6">
-                    <h3 class="text-xl font-bold text-green-600 mb-2">Mountain Hiking</h3>
-                    <p>Explore breathtaking mountains while protecting nature.</p>
-                    <button class="mt-4 px-4 py-2 bg-green-600 text-white rounded shadow hover:bg-green-500 transition transform hover:scale-105">Book Now</button>
+            
+            <div class="bg-white rounded-xl overflow-hidden package-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="h-60 overflow-hidden">
+                    <img src="gambar3.jpg" class="w-full h-full object-cover package-image" alt="Forest Adventure">
                 </div>
+                <div class="p-6">
+                    <h4 class="text-2xl font-bold font-serif text-forest mb-1">Deep Rainforest</h4>
+                    <p class="text-sm text-gray-500 mb-3">10 Days | Amazon, Brazil</p>
+                    <p class="text-gray-700 text-sm mb-4">Experience the heart of the wilderness with guided indigenous eco-tours and canopy walks.</p>
+                    <a href="#contact" class="px-4 py-2 bg-forest text-white font-semibold rounded shadow hover:bg-forest-light transition uppercase text-sm">Book Now</a>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-xl overflow-hidden package-card" data-aos="fade-up" data-aos-delay="400">
+                <div class="h-60 overflow-hidden">
+                    <img src="gambar4.jpg" class="w-full h-full object-cover package-image" alt="Mountain Hiking">
+                </div>
+                <div class="p-6">
+                    <h4 class="text-2xl font-bold font-serif text-forest mb-1">Himalayan Trek</h4>
+                    <p class="text-sm text-gray-500 mb-3">14 Days | Nepal</p>
+                    <p class="text-gray-700 text-sm mb-4">Explore breathtaking mountains while supporting local sherpa communities and clean water projects.</p>
+                    <a href="#contact" class="px-4 py-2 bg-forest text-white font-semibold rounded shadow hover:bg-forest-light transition uppercase text-sm">Book Now</a>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+    
+    <section class="bg-dark-text/95 section-separator text-white px-4">
+        <div class="max-w-4xl mx-auto text-center" data-aos="fade-zoom-in" data-aos-duration="1000">
+            <i class="fas fa-quote-left text-4xl text-forest-light mb-4"></i>
+            <blockquote class="text-2xl italic mb-6 font-serif leading-relaxed">
+                "EcoTravel truly delivered on their promise. Our trip to the Amazon was not just an adventure, but a meaningful and responsible experience. Their service was highly professional."
+            </blockquote>
+            <p class="font-semibold text-lg text-forest-light">- Sarah T., Environmental Journalist</p>
+        </div>
+    </section>
+
+
+    <section id="about" class="bg-taupe-light section-separator px-4">
+        <div class="max-w-4xl mx-auto text-center" data-aos="fade-zoom-in" data-aos-duration="1000">
+            <h2 class="text-base font-semibold text-forest uppercase tracking-widest mb-2">Our Mission</h2>
+            <h3 class="text-4xl font-bold font-serif text-dark-text mb-6">Pioneering Responsible Tourism</h3>
+            <p class="max-w-3xl mx-auto text-lg text-gray-700">EcoTravel is committed to providing sustainable and responsible travel experiences. Our mission is to preserve nature and empower communities while ensuring every traveler has an unforgettable adventure that leaves a positive mark on the world.</p>
+             <div class="mt-8">
+                <a href="#contact" class="inline-block border-2 border-forest text-forest font-semibold px-8 py-3 rounded-full hover:bg-forest hover:text-white transition uppercase tracking-wider shadow-md">Get In Touch</a>
             </div>
         </div>
     </section>
 
-    <!-- About -->
-    <section id="about" class="bg-gray-50 py-20 px-4 text-center" data-aos="fade-left" data-aos-duration="1200">
-        <h2 class="text-3xl font-bold text-green-600 mb-6">About EcoTravel</h2>
-        <p class="max-w-3xl mx-auto text-lg">EcoTravel is committed to providing sustainable and responsible travel experiences. Our mission is to preserve nature while giving travelers unforgettable adventures.</p>
-    </section>
-
-    <!-- Newsletter / Contact -->
-    <section id="newsletter" class="py-20 px-4 text-center bg-green-100 text-green-800" data-aos="fade-up" data-aos-duration="1000">
-        <h2 class="text-3xl font-bold mb-4">Subscribe to Our Newsletter</h2>
-        <p class="mb-6">Get the latest eco-travel packages and tips delivered to your inbox.</p>
-        <div class="flex flex-col md:flex-row justify-center items-center gap-4 max-w-md mx-auto">
-            <input type="email" placeholder="Enter your email" class="px-4 py-2 rounded w-full text-gray-700 border border-gray-300" aria-label="Email">
-            <button class="px-6 py-2 bg-green-600 text-white font-semibold rounded hover:bg-green-500 transition">Subscribe</button>
-        </div>
-        <!-- Social Media Icons Simpel -->
-        <div class="mt-8 flex justify-center gap-6 text-3xl">
-            <a href="#" class="text-blue-600 hover:text-blue-800 transition transform hover:scale-125"><i class="fab fa-facebook-f"></i></a>
-            <a href="#" class="text-sky-400 hover:text-sky-600 transition transform hover:scale-125"><i class="fab fa-twitter"></i></a>
-            <a href="#" class="text-pink-500 hover:text-pink-700 transition transform hover:scale-125"><i class="fab fa-instagram"></i></a>
-            <a href="#" class="text-green-500 hover:text-green-700 transition transform hover:scale-125"><i class="fab fa-whatsapp"></i></a>
+    <section id="contact" class="py-20 px-4 bg-forest">
+        <div class="max-w-4xl mx-auto text-center" data-aos="fade-up" data-aos-duration="1000">
+            <h2 class="text-4xl font-bold font-serif mb-4 text-white">Ready to Plan Your Sustainable Journey?</h2>
+            <p class="mb-8 text-lg text-white/90">Contact our dedicated travel consultant today to customize your eco-friendly adventure.</p>
+            
+            <a href="mailto:info@ecotravel.com" class="inline-block bg-white text-forest font-semibold px-10 py-4 rounded-full hover:bg-gray-200 transition shadow-2xl text-lg uppercase tracking-wider">Start Planning Now</a>
+            
+            <div class="mt-12 flex justify-center gap-6 text-2xl">
+                <a href="#" class="text-white/70 hover:text-white transition transform hover:scale-110"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="text-white/70 hover:text-white transition transform hover:scale-110"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="text-white/70 hover:text-white transition transform hover:scale-110"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="text-white/70 hover:text-white transition transform hover:scale-110"><i class="fab fa-whatsapp"></i></a>
+            </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="bg-gray-100 text-gray-600 py-6 text-center" data-aos="fade-up" data-aos-duration="1000">
-        <p>&copy; 2025 EcoTravel. All rights reserved. | Contact: info@ecotravel.com</p>
+    <footer class="bg-dark-text text-gray-400 py-6 text-center">
+        <p>&copy; 2025 EcoTravel. All rights reserved. | Email: info@ecotravel.com</p>
     </footer>
 
-    <!-- Scripts -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init({ once: true });
